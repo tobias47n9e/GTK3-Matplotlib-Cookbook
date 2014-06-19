@@ -42,6 +42,7 @@ I am a beginning programmer, so the presented code might not be optimal. If you 
 Directory
 ---------
 .. toctree::
+   :numbered:
    :maxdepth: 2
    
    hello-plot
