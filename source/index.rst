@@ -11,9 +11,14 @@ This Cookbook explains how to embed Matplotlib into GTK3 using Python 3. The tut
 
 If you would like to add your own examples to this tutorial, please create an issue or pull request at the github repository.
 
+.. figure:: _static/firstwindow.png
+    :width: 200px
+    :align: center
+    :alt: First window with embedded Matplotlib
+
 Requirements
 ------------
-To follow the examples you should have access to GTK+ 3.x, Python 3.x and Glade 3.16.x or a more recent version.
+To follow the examples you should have access to GTK+ 3.x, Python 3.x, Matplotlib 1.3.x and Glade 3.16.x or a more recent version.
 
 Recommended reading
 -------------------
