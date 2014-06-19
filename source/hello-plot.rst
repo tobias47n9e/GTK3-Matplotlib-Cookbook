@@ -1,4 +1,4 @@
-.. _helloplot:
+.. _hello-plot:
 
 Hello plot!
 ============

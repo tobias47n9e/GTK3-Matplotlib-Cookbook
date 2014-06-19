@@ -32,7 +32,8 @@ Directory
 .. toctree::
    :maxdepth: 2
    
-   helloplot
+   index
+   hello-plot
 
 
 Indices and tables
