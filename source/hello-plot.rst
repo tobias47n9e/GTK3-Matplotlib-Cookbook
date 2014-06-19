@@ -130,3 +130,58 @@ The last two lines of the program are the same as for the previous example.
 
 Embedding Matplotlib
 --------------------
+Now that we have an empty window we will learn how to place Matplotlib into it. The main differences are that we need to import Matplotlib-specific packages, insert our Matplotlib-code and place the resulting *FigureCanvas* in a *Gtk.ScrolledWindow* (which is a child-element of the *Gtk.Window*).
+
+We will look at an example that will produce a random radial plot on each application start (adapted from http://matplotlib.org/dev/examples/pie_and_polar_charts/polar_bar_demo.html). The finished plot can be seen in ***Figure 1*** and Python-code is:
+
+::
+
+    #!/usr/bin/python3
+
+    from gi.repository import Gtk
+
+    from matplotlib.figure import Figure
+    from numpy import arange, pi, random, linspace
+    import matplotlib.pyplot as plt
+    from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+
+    myfirstwindow = Gtk.Window()
+    myfirstwindow.connect("delete-event", Gtk.main_quit)
+    myfirstwindow.set_default_size(400, 400)
+
+    fig = Figure(figsize=(5,5), dpi=100)
+    ax = fig.add_subplot(111, polar=True)
+
+    N = 20
+    theta = linspace(0.0, 2 * pi, N, endpoint=False)
+    radii = 10 * random.rand(N)
+    width = pi / 4 * random.rand(N)
+
+    bars = ax.bar(theta, radii, width=width, bottom=0.0)
+
+    for r, bar in zip(radii, bars):
+        bar.set_facecolor(plt.cm.jet(r / 10.))
+        bar.set_alpha(0.5)
+
+    ax.plot()
+
+    sw = Gtk.ScrolledWindow()
+    myfirstwindow.add(sw)
+
+    canvas = FigureCanvas(fig)
+    canvas.set_size_request(400,400)
+    sw.add_with_viewport(canvas)
+
+    myfirstwindow.show_all()
+    Gtk.main()
+    
+.. figure:: _static/firstwindow.png
+    :width: 200px
+    :align: center
+    :alt: First window with embedded Matplotlib
+
+    Figure 1: The first window with an embedded Matplotlib-graph as it displays in Ubuntu 14.04.
+
+Further Reading
+^^^^^^^^^^^^^^^^^^^^^^^
+ - https://docs.python.org/3/library/functions.html#zip
