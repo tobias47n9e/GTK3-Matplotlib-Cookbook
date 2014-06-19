@@ -44,7 +44,6 @@ Directory
 .. toctree::
    :maxdepth: 2
    
-   index
    hello-plot
 
 
