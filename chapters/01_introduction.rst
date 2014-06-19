@@ -1,8 +1,5 @@
 Introduction
 ============
-
-:Release: |version|
-:Date: |today|
 :Copyright: GNU Free Documentation License 1.3 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts
 
 This Cookbook explains how to embed Matplotlib into GTK3 using Python 3. The tutorials will start out simple, and slowly increase in difficulty. The examples will focus on education and application of mathematics and science. The goal is to make the reader a independent developer of scientific applications that process and graph data.
