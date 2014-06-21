@@ -2,7 +2,6 @@
 
 Hello plot!
 ============
-
 The first chapter will explain how to open an empty GTK3-window and then how to embed Matplotlib into it.
 
 For small applications the GTK3-code can be easily integrated into the Python-code. Building the interface with Glade is a little more complicated in the beginning. With increasing size though, the usage of Glade will become more useful.
@@ -66,6 +65,13 @@ Empty window with Glade
 ^^^^^^^^^^^^^^^^^^^^^^^
 Opening an empty window with Glade takes a little more effort. First we need to open the Glade interface designer. Then drag a *GtkWindow* into the workspace. By default the window will be named *"window1"*, which we can keep. Then we have to set a signal for that window, so we can later close it. The signal we need is *"GtkWidget --> destroy"* and in the column process we can set *"on_window1_destroy"*. This will also be the name of the function in the Python code.
 
+.. figure:: _static/empty-window-glade.png
+    :width: 400px
+    :align: center
+    :alt: Glade-screenshot
+
+    The steps in Glade are: Create a *GtkWindow*, then open the Signals tab and enter *"on_window1_destroy"* for *"GtkWidget --> destroy"*.
+
 This is all we need for an empty (and closable) window. Then we can save the file with the extension *".glade"*. The finished XML-code of that file looks like this and should be fairly easy to understand:
 
 ::
@@ -128,11 +134,18 @@ Next the builder needs to connect the signals that we defined in the Glade file.
             
 The last two lines of the program are the same as for the previous example.
 
+Further Reading
+^^^^^^^^^^^^^^^^^^^^^^^
+ - `Python GTK+ 3 Tutorial: Getting started <http://python-gtk-3-tutorial.readthedocs.org/en/latest/introduction.html>`_
+ - `GTK+ 3 Reference Manual <https://developer.gnome.org/gtk3/>`_
+ - `GTK+ 3 Reference Manual: GtkBuilder <https://developer.gnome.org/gtk3/stable/GtkBuilder.html>`_
+ - `Glade - A user interface designer <https://glade.gnome.org/>`_
+
 Embedding Matplotlib
 --------------------
 Now that we have an empty window we will learn how to place Matplotlib into it. The main differences are that we need to import Matplotlib-specific packages, insert our Matplotlib-code and place the resulting *FigureCanvas* in a *Gtk.ScrolledWindow* (which is a child-element of the *Gtk.Window*).
 
-We will look at an example that will produce a random radial plot on each application start (adapted from http://matplotlib.org/dev/examples/pie_and_polar_charts/polar_bar_demo.html). The finished plot can be seen in ***Figure 1*** and Python-code is:
+We will look at an example that will produce a random radial plot on each application start (adapted from http://matplotlib.org/dev/examples/pie_and_polar_charts/polar_bar_demo.html). The finished  Python-code is:
 
 ::
 
@@ -178,15 +191,24 @@ We will look at an example that will produce a random radial plot on each applic
 .. figure:: _static/firstwindow.png
     :width: 200px
     :align: center
-    :alt: First window with embedded Matplotlib
+    :alt: GTK window with Matplotlib screenshot
 
-    Figure 1: The first window with an embedded Matplotlib-graph as it displays in Ubuntu 14.04.
+    The first window with an embedded Matplotlib-graph as it renders in Ubuntu 14.04.
 
 Embedding Matplotlib with Glade
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Recreating the previous example with Glade requires just some minor changes to the Glade-file and a slightly different Python-3-code.
 
-First we need to add a *GtkScrolledWindow* to our empty window. Although the name has "window" in it, it actually is more like a canvas for other widgets. In the Python code we will place in the next step a *FigureCanvas* into the *GtkScrolledWindow*. The XML-code of the Glade-file after the modifications looks like this:
+First we need to add a *GtkScrolledWindow* to our empty window. Although the name has "window" in it, it actually is more like a canvas for other widgets. In the Python code we will place in the next step a *FigureCanvas* into the *GtkScrolledWindow*. In order to give the plot more space, we can also set the default width and height of *"window1"* to 400 px each.
+
+.. figure:: _static/matplotlibwindow-glade.png
+    :width: 400px
+    :align: center
+    :alt: Glade-screenshot
+
+    Starting with the previous example all we need to add is a *GtkScrolledWindow*.
+
+The XML-code of the Glade-file after the modifications looks like this:
 
 ::
 
@@ -261,4 +283,12 @@ Starting with the code from the previous examples we only have to make slight ch
 
 Further Reading
 ^^^^^^^^^^^^^^^^^^^^^^^
- - https://docs.python.org/3/library/functions.html#zip
+ - `The Python Standard Library: Built-in Functions: zip <https://docs.python.org/3/library/functions.html#zip>`_
+ - `Numpy <http://www.numpy.org/>`_
+ - `The Matplotlib API: pyplot <http://matplotlib.org/api/pyplot_api.html>`_
+ - `The Matplotlib API: figure <http://matplotlib.org/api/figure_api.html>`_
+ - `Pyplot tutorial <http://matplotlib.org/users/pyplot_tutorial.html>`_
+ - `Numpy Manual: linspace <http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html>`_
+ - FigureCanvasGTK3Agg documentation [[2014-06-21 Find link for documentation]]
+ 
+ 

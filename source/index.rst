@@ -52,7 +52,6 @@ Directory
    
    hello-plot
 
-
 Indices and tables
 ==================
 -* :ref:`genindex`
