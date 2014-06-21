@@ -155,7 +155,7 @@ We will look at an example that will produce a random radial plot on each applic
 
     from matplotlib.figure import Figure
     from numpy import arange, pi, random, linspace
-    import matplotlib.pyplot as plt
+    import matplotlib.cm as cm
     from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
 
     myfirstwindow = Gtk.Window()
@@ -163,7 +163,7 @@ We will look at an example that will produce a random radial plot on each applic
     myfirstwindow.set_default_size(400, 400)
 
     fig = Figure(figsize=(5,5), dpi=100)
-    ax = fig.add_subplot(111, polar=True)
+    ax = fig.add_subplot(111, projection='polar')
 
     N = 20
     theta = linspace(0.0, 2 * pi, N, endpoint=False)
@@ -173,7 +173,7 @@ We will look at an example that will produce a random radial plot on each applic
     bars = ax.bar(theta, radii, width=width, bottom=0.0)
 
     for r, bar in zip(radii, bars):
-        bar.set_facecolor(plt.cm.jet(r / 10.))
+        bar.set_facecolor(cm.jet(r / 10.))
         bar.set_alpha(0.5)
 
     ax.plot()
@@ -194,6 +194,77 @@ We will look at an example that will produce a random radial plot on each applic
     :alt: GTK window with Matplotlib screenshot
 
     The first window with an embedded Matplotlib-graph as it renders in Ubuntu 14.04.
+    
+As you probably noticed we imported a few more modules. The module *matplotlib.figure* is required to render the graph. We need some functions from *NumPy* for evenly dividing an interval (*numpy.arange*), the value for the constant pi (*numpy.pi*), a function for random numbers (*numpy.random*) and a function that returns evenly spaced numbers in an interval (*numpy.linspace*). We also need the colormap function (*matplotlib.cm*). The container in which the graph is rendered is the *FigureCanvasGTK3Agg*.
+
+::
+
+    from matplotlib.figure import Figure
+    from numpy import arange, pi, random, linspace
+    import matplotlib.cm as cm
+    from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    
+In order to give the plot a sufficient default size we add this line:
+
+::
+
+    myfirstwindow.set_default_size(400, 400)
+
+Next we create an instance of a *matplotlib.figure* and define its size and resolution. The resolution is a fixed value, which means that your plots will probably not look the same on newer display with very high pixel-densities. 100 dpi ("dots per inch", which is a very annoying non-metric unit) works well for regular screens which is about 40 pixels per cm.
+
+::
+
+    fig = Figure(figsize=(5,5), dpi=100)
+  
+Then we add a subplot to the plot (This sounds a little weird for only one graph, but you can acutally add many subplots to one plot). 111 means that we have a 1 x 1 grid and are putting the subplot in the 1st cell. Because we want to create a polar plot, we have to set *"projection='polar'"*.
+    
+::
+
+    ax = fig.add_subplot(111, projection='polar')
+
+Next we will define the number of intervals, and divide a full circle (in radian-units: 2*pi) by that number. Then we create random arrays for 20 radiis and 20 widths for the histogram bars. You can test if the program uses an array by trying *"radii = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]"* to create bars that have radii from 1 to 20.
+
+::
+    
+    N = 20
+    theta = linspace(0.0, 2 * pi, N, endpoint=False)
+    radii = 10 * random.rand(N)
+    width = pi / 4 * random.rand(N)
+    
+Then we assign the newly created bars to our plot and store them in a variable:
+
+::
+
+    bars = ax.bar(theta, radii, width=width, bottom=0.0)
+    
+We can use this variable *"bars"* to customize the plot. We will do this for the color in the next piece of code. This algorithm assigns each radius a different color using the *"cm.jet"* color scheme (See `Matplotlib: Colormaps reference <http://matplotlib.org/examples/color/colormaps_reference.html>`_ for more color maps). Additionaly the alpha of each histogram-bar is set to "0.5".
+
+::
+
+    for r, bar in zip(radii, bars):
+        bar.set_facecolor(cm.jet(r / 10.))
+        bar.set_alpha(0.5)
+        
+In the next step we plot the generated graph:
+
+::
+
+    ax.plot()
+    
+Then we just have to create a *GtkScrolledWindow*, and add it to our *GtkWindow*.
+
+::
+
+    sw = Gtk.ScrolledWindow()
+    myfirstwindow.add(sw)
+    
+Finally we can create an instance of a *FigureCanvasGTK3Agg* with our figure included in it. Then we set the size of the canvas and add embed it into the *GtkScrolledWindow*.
+  
+::
+
+    canvas = FigureCanvas(fig)
+    canvas.set_size_request(400,400)
+    sw.add_with_viewport(canvas)
 
 Embedding Matplotlib with Glade
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -244,7 +315,7 @@ Starting with the code from the previous examples we only have to make slight ch
     
     from matplotlib.figure import Figure
     from numpy import arange, pi, random, linspace
-    import matplotlib.pyplot as plt
+    import matplotlib.cm as cm
     from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
     
     class Signals:
@@ -259,7 +330,7 @@ Starting with the code from the previous examples we only have to make slight ch
     sw = builder.get_object('scrolledwindow1')
     
     fig = Figure(figsize=(5,5), dpi=100)
-    ax = fig.add_subplot(111, polar=True)
+    ax = fig.add_subplot(111, projection='polar')
     
     N = 20
     theta = linspace(0.0, 2 * pi, N, endpoint=False)
@@ -269,7 +340,7 @@ Starting with the code from the previous examples we only have to make slight ch
     bars = ax.bar(theta, radii, width=width, bottom=0.0)
     
     for r, bar in zip(radii, bars):
-        bar.set_facecolor(plt.cm.jet(r / 10.))
+        bar.set_facecolor(cm.jet(r / 10.))
         bar.set_alpha(0.5)
     
     ax.plot()
@@ -279,7 +350,13 @@ Starting with the code from the previous examples we only have to make slight ch
     
     myfirstwindow.show_all()
     Gtk.main()
+    
+The most important difference to the non-Glade code is that we need to get our *GtkWindow* and *GtkScrolledWindow* from Glade using the *GtkBuilder*:
 
+::
+
+    myfirstwindow = builder.get_object('window1')
+    sw = builder.get_object('scrolledwindow1')
 
 Further Reading
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -287,8 +364,14 @@ Further Reading
  - `Numpy <http://www.numpy.org/>`_
  - `The Matplotlib API: pyplot <http://matplotlib.org/api/pyplot_api.html>`_
  - `The Matplotlib API: figure <http://matplotlib.org/api/figure_api.html>`_
+ - `The Matplotlib API: cm (colormap) <http://matplotlib.org/api/cm_api.html>`_
+ - `Matplotlib: Colormaps reference <http://matplotlib.org/examples/color/colormaps_reference.html>`_
  - `Pyplot tutorial <http://matplotlib.org/users/pyplot_tutorial.html>`_
- - `Numpy Manual: linspace <http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html>`_
+ - `Numpy: linspace <http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html>`_
+ - `Numpy: arange <http://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html>`_
+ - `Numpy: random <http://docs.scipy.org/doc/numpy/reference/routines.random.html>`_
+ - `Numpy: random.rand <http://docs.scipy.org/doc/numpy/reference/generated/numpy.random.rand.html#numpy.random.rand>`_
  - FigureCanvasGTK3Agg documentation [[2014-06-21 Find link for documentation]]
+ - `Stackoverflow question about subplot grids <http://stackoverflow.com/questions/3584805/in-matplotlib-what-does-111-means-in-fig-add-subplot111>`_
  
  
