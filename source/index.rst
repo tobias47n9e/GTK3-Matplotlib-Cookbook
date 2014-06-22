@@ -51,6 +51,7 @@ Directory
    :maxdepth: 2
    
    hello-plot
+   matplotlib-toolbar
 
 Indices and tables
 ==================
