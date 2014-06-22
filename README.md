@@ -1,6 +1,6 @@
 GTK3-Matplotlib-Cookbook
 ========================
-This cookbook introduces the reader to the development of graphical user interfaces with plots for science teaching and research. The programs are written in Python 3 and the user interface is build using the Python3-bindings for GTK+ 3.x (PyGObject). The plots are made using Matplotlib.
+This cookbook introduces the reader to the development of graphical user interfaces with plots for science teaching and research. The programs are written in Python 3 and the user interface is build using the Python3-bindings for GTK+ 3.x (PyGObject), and the layout is done both within the code and using a graphical user-interface builder (Glade). The plots are made using Matplotlib.
 
 ##Author
 Tobias Schönberg
