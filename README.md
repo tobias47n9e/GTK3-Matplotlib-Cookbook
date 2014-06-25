@@ -9,7 +9,7 @@ Tobias Schönberg
 https://github.com/spiessbuerger/GTK3-Matplotlib-Cookbook
 
 ##Reading the Book
-http://python-gtk-3-tutorial.readthedocs.org/
+http://gtk3-matplotlib-cookbook.readthedocs.org/
 
 ##Progress
 The book is currently under development.
