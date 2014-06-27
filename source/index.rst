@@ -9,7 +9,7 @@ Introduction
 
 This Cookbook explains how to embed Matplotlib into GTK3 using Python 3. The tutorials will start out simple, and slowly increase in difficulty. The examples will focus on education and application of mathematics and science. The goal is to make the reader a independent developer of scientific applications that process and graph data.
 
-If you would like to add your own examples to this tutorial, please create an issue or pull request at the github repository.
+If you would like to add your own examples to this tutorial, please create an issue or pull-request at the github repository (https://github.com/spiessbuerger/GTK3-Matplotlib-Cookbook).
 
 .. figure:: _static/firstwindow.png
     :width: 200px
@@ -37,6 +37,9 @@ Additional reading:
 
 News and comments
 -----------------
+2014-06-27
+^^^^^^^^^^
+Third chapter about zooming closer to datapoints is done. Currently I am just adding examples when I'm pleased with them. I will reorganize the book once the content is done. The new example relies heavily on *classes*. Is the amount of explanation sufficient?
 
 2014-06-19
 ^^^^^^^^^^
@@ -52,6 +55,7 @@ Directory
    
    hello-plot
    matplotlib-toolbar
+   zooming
 
 Indices and tables
 ==================

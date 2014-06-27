@@ -331,7 +331,7 @@ Further reading
 ^^^^^^^^^^^^^^^
  - Matplotlib: `Interactive navigation <http://matplotlib.org/users/navigation_toolbar.html>`_
  - Python GTK+ 3 Tutorial: `Layout Containers <http://python-gtk-3-tutorial.readthedocs.org/en/latest/layout.html>`_
- - GTK3 API: `GtkBox <https://developer.gnome.org/gtk3/stable/GtkBox.html>`
+ - GTK3 API: `GtkBox <https://developer.gnome.org/gtk3/stable/GtkBox.html>`_
  - Python Scientific Lecture Notes: Matplotlib plotting: `Annotate some points <http://scipy-lectures.github.io/intro/matplotlib/matplotlib.html#annotate-some-points>`_
  - Matplotlib API: `Spines <http://matplotlib.org/api/spines_api.html>`_
  
