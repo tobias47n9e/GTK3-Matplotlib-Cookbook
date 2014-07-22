@@ -56,6 +56,7 @@ Directory
    hello-plot
    matplotlib-toolbar
    zooming
+   enteringdata
 
 Indices and tables
 ==================
