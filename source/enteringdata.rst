@@ -146,8 +146,14 @@ The end of the code creates an instance of the *MainClass*, sets up the plot usi
     mc.window.connect("delete-event", Gtk.main_quit)
     mc.window.show_all()
     Gtk.main()
+    
+The finished program under Ubuntu looks like this:
 
-Further reading
+.. figure:: _static/enteringdata.png
+    :width: 300px
+    :align: center
+    :alt: Screenshot of the enteringdata program.
+
 ^^^^^^^^^^^^^^^
  - Python GTK+ 3 Tutorial: `Tree and List Widgets <http://python-gtk-3-tutorial.readthedocs.org/en/latest/treeview.html>`_
  - AskUbuntu: `What is the black header widget in some programs? <http://askubuntu.com/questions/67362/what-is-the-black-header-widget-in-some-programs>`_
