@@ -17,3 +17,8 @@ The book is currently under development.
 ##Participation
 You can participate by forking the repository or opening an issue at the repository.
 
+##Code Review
+This reposistory is monitored by Landscape.
+
+![Landscape Code Review](https://landscape.io/github/spiessbuerger/GTK3-Matplotlib-Cookbook/master/landscape.png "Landscape Code Review")
+
