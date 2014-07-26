@@ -1,18 +1,17 @@
 #!/usr/bin/python3
 
 from gi.repository import Gtk
-
 from matplotlib.figure import Figure
-from numpy import arange, pi, random, linspace
+from numpy import pi, random, linspace
 import matplotlib.cm as cm
 from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
 
-myfirstwindow = Gtk.Window()
-myfirstwindow.connect("delete-event", Gtk.main_quit)
-myfirstwindow.set_default_size(400, 400)
+my_first_window = Gtk.Window()
+my_first_window.connect("delete-event", Gtk.main_quit)
+my_first_window.set_default_size(400, 400)
 
-fig = Figure(figsize=(5,5), dpi=100)
-ax = fig.add_subplot(111, projection='polar')
+mplfigure = Figure(figsize=(5, 5), dpi=100)
+ax = mplfigure.add_subplot(111, projection='polar')
 
 N = 20
 theta = linspace(0.0, 2 * pi, N, endpoint=False)
@@ -28,11 +27,11 @@ for r, bar in zip(radii, bars):
 ax.plot()
 
 sw = Gtk.ScrolledWindow()
-myfirstwindow.add(sw)
+my_first_window.add(sw)
 
-canvas = FigureCanvas(fig)
-canvas.set_size_request(400,400)
+canvas = FigureCanvas(mplfigure)
+canvas.set_size_request(400, 400)
 sw.add_with_viewport(canvas)
 
-myfirstwindow.show_all()
+my_first_window.show_all()
 Gtk.main()
