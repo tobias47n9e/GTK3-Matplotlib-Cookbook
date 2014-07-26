@@ -4,12 +4,13 @@ from gi.repository import Gtk
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
 
-class MainClass():
+class MainClass(Gtk.Window):
     def __init__(self):
-        self.window = Gtk.Window()
-        self.window.set_default_size(800, 500)
+        Gtk.Window.__init__(self, title="Matplotlib")
+        self.set_default_size(800, 500)
         self.boxvertical = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        self.window.add(self.boxvertical)
+        self.connect("delete-event", Gtk.main_quit)
+        self.add(self.boxvertical)
         
         self.toolbar = Gtk.Toolbar()
         self.context = self.toolbar.get_style_context()
@@ -92,6 +93,5 @@ mc = MainClass()
 mc.resetplot()
 mc.plotpoints()
 
-mc.window.connect("delete-event", Gtk.main_quit)
-mc.window.show_all()
+mc.show_all()
 Gtk.main()
