@@ -2,7 +2,7 @@
 
 from gi.repository import Gtk
 
-class Signals:
+class Signals():
     def on_window1_destroy(self, widget):
         Gtk.main_quit()
 
