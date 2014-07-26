@@ -10,5 +10,5 @@ ignore-paths:
     - docs
     - mypackage/vendor
 ignore-patterns:
-    - ^source/conf.py
+    - ^source/conf.py$
 
