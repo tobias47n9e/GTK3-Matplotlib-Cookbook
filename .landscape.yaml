@@ -1,0 +1,14 @@
+doc-warnings: false
+test-warnings: false
+strictness: high
+max-line-length: 120
+uses:
+    - django
+    - celery
+autodetect: yes
+ignore-paths:
+    - docs
+    - mypackage/vendor
+ignore-patterns:
+    - ^source/conf.py
+
