@@ -11,12 +11,12 @@ class DrawPoints:
     '''Creates random points, 2 axis on 1 figure on 1 canvas on init. Allows for drawing and zooming of points.'''
     def __init__(self):
         self.n = 20
-        self.xrand = random.rand(1,self.n)*10
-        self.yrand = random.rand(1,self.n)*10
-        self.randsize = random.rand(1,self.n)*200
-        self.randcolor = random.rand(self.n,3)
+        self.xrand = random.rand(1, self.n)*10
+        self.yrand = random.rand(1, self.n)*10
+        self.randsize = random.rand(1, self.n)*200
+        self.randcolor = random.rand(self.n, 3)
 
-        self.fig = Figure(figsize=(10,10), dpi=80)
+        self.fig = Figure(figsize=(10, 10), dpi=80)
         self.ax = self.fig.add_subplot(121)
         self.axzoom = self.fig.add_subplot(122)
         self.canvas = FigureCanvas(self.fig)
@@ -24,8 +24,8 @@ class DrawPoints:
         '''Draws the ax-subplot'''
         self.ax.cla()
         self.ax.grid(True)
-        self.ax.set_xlim(0,10)
-        self.ax.set_ylim(0,10)
+        self.ax.set_xlim(0, 10)
+        self.ax.set_ylim(0, 10)
         self.ax.scatter(self.xrand, self.yrand, marker='o', s=self.randsize, c=self.randcolor, alpha=0.5)
     def drawzoom(self):
         '''Draws the axzoom-suplot'''
@@ -48,7 +48,7 @@ def updatecursorposition(event):
     if event.inaxes:
         x = event.xdata
         y = event.ydata
-        statbar.push(1, ("Coordinates:" + " x= " + str(round(x,3)) + "  y= " + str(round(y,3))))
+        statbar.push(1, ("Coordinates:" + " x= " + str(round(x, 3)) + "  y= " + str(round(y, 3))))
 
 def updatezoom(event):
     '''When mouse is right-clicked on the canvas get the coordiantes and send them to points.zoom'''
