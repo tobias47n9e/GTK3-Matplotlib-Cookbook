@@ -31,8 +31,12 @@ Additional reading:
    - http://wiki.scipy.org/Cookbook/Matplotlib
 
  - Scientific Python
- 
-   - http://scipy-lectures.github.io/   
+
+   - http://scipy-lectures.github.io/
+   
+ - GTK3 Reference
+   
+   - https://lazka.github.io/pgi-docs/Gtk-3.0/index.html   
 
 
 News and Comments
