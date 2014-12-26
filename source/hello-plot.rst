@@ -156,7 +156,9 @@ We will look at an example that will produce a random radial plot on each applic
     from matplotlib.figure import Figure
     from numpy import arange, pi, random, linspace
     import matplotlib.cm as cm
-    from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    #Possibly this rendering backend is broken currently
+    #from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas
 
     myfirstwindow = Gtk.Window()
     myfirstwindow.connect("delete-event", Gtk.main_quit)
@@ -195,14 +197,16 @@ We will look at an example that will produce a random radial plot on each applic
 
     The first window with an embedded Matplotlib-graph as it renders in Ubuntu 14.04.
     
-As you probably noticed we imported a few more modules. The module *matplotlib.figure* is required to render the graph. We need some functions from *NumPy* for evenly dividing an interval (*numpy.arange*), the value for the constant pi (*numpy.pi*), a function for random numbers (*numpy.random*) and a function that returns evenly spaced numbers in an interval (*numpy.linspace*). We also need the colormap function (*matplotlib.cm*). The container in which the graph is rendered is the *FigureCanvasGTK3Agg*.
+As you probably noticed we imported a few more modules. The module *matplotlib.figure* is required to render the graph. We need some functions from *NumPy* for evenly dividing an interval (*numpy.arange*), the value for the constant pi (*numpy.pi*), a function for random numbers (*numpy.random*) and a function that returns evenly spaced numbers in an interval (*numpy.linspace*). We also need the colormap function (*matplotlib.cm*). The container in which the graph is rendered is the *FigureCanvasGTK3Agg* or *FigureCanvasGTK3Cairo*.
 
 ::
 
     from matplotlib.figure import Figure
     from numpy import arange, pi, random, linspace
     import matplotlib.cm as cm
-    from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    #Possibly this rendering backend is broken currently
+    #from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas
     
 In order to give the plot a sufficient default size we add this line:
 
@@ -258,7 +262,7 @@ Then we just have to create a *GtkScrolledWindow*, and add it to our *GtkWindow*
     sw = Gtk.ScrolledWindow()
     myfirstwindow.add(sw)
     
-Finally we can create an instance of a *FigureCanvasGTK3Agg* with our figure included in it. Then we set the size of the canvas and add embed it into the *GtkScrolledWindow*.
+Finally we can create an instance of a *FigureCanvasGTK3Agg* or *FigureCanvasGTK3Cairo* with our figure included in it. Then we set the size of the canvas and add embed it into the *GtkScrolledWindow*.
   
 ::
 
@@ -316,7 +320,9 @@ Starting with the code from the previous examples we only have to make slight ch
     from matplotlib.figure import Figure
     from numpy import arange, pi, random, linspace
     import matplotlib.cm as cm
-    from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    #Possibly this rendering backend is broken currently
+    #from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas
     
     class Signals:
         def on_window1_destroy(self, widget):
@@ -372,6 +378,7 @@ Further Reading
  - `Numpy: random <http://docs.scipy.org/doc/numpy/reference/routines.random.html>`_
  - `Numpy: random.rand <http://docs.scipy.org/doc/numpy/reference/generated/numpy.random.rand.html#numpy.random.rand>`_
  - FigureCanvasGTK3Agg documentation [[2014-06-21 Find link for documentation]]
+ - FigureCanvasGTK3Cairo documentaion [Link needed]
  - `Stackoverflow question about subplot grids <http://stackoverflow.com/questions/3584805/in-matplotlib-what-does-111-means-in-fig-add-subplot111>`_
  
  

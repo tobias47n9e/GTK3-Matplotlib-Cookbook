@@ -17,7 +17,9 @@ The program requires the following imports:
     
     from gi.repository import Gtk
     from matplotlib.figure import Figure
-    from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    #Possibly this rendering backend is broken currently
+    #from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas
 
 I decided to put the whole program into a class. First we have to set up the window, the layout and a *Gtk.Toolbar*. The two lines starting with *self.context* ensure that the toolbar will be styled similar to your operating system.
 

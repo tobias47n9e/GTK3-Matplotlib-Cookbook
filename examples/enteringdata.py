@@ -2,7 +2,9 @@
 
 from gi.repository import Gtk
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+#Possibly this rendering backend is broken currently
+#from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas
 
 class MainClass(Gtk.Window):
     def __init__(self):

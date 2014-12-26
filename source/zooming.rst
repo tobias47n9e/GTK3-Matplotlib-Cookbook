@@ -26,8 +26,9 @@ At the beginning of the code we will import the usual modules. New is the import
     from gi.repository import Gtk
     from matplotlib.figure import Figure
     from numpy import random
-    from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
-    from matplotlib.backends.backend_gtk3 import NavigationToolbar2GTK3 as NavigationToolbar
+    #Possibly this rendering backend is broken currently
+    #from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas    from matplotlib.backends.backend_gtk3 import NavigationToolbar2GTK3 as NavigationToolbar
     from matplotlib.patches import Rectangle
 
 The *DrawPoints* class will do most of the work in this example. On init, we will define some variables and set up the 2 subplots. Each subplot has its own drawing function, which clears the subplot, before drawing. The *zoom* function recycles the *draw* and *drawzoom* function.
@@ -130,8 +131,9 @@ This is the code of the whole example:
     from gi.repository import Gtk
     from matplotlib.figure import Figure
     from numpy import random
-    from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
-    from matplotlib.backends.backend_gtk3 import NavigationToolbar2GTK3 as NavigationToolbar
+    #Possibly this rendering backend is broken currently
+    #from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas    from matplotlib.backends.backend_gtk3 import NavigationToolbar2GTK3 as NavigationToolbar
     from matplotlib.patches import Rectangle
 
     class DrawPoints:

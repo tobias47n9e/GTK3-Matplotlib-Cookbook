@@ -5,7 +5,9 @@ from gi.repository import Gtk
 from matplotlib.figure import Figure
 from numpy import arange, pi, random, linspace
 import matplotlib.cm as cm
-from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+#Possibly this rendering backend is broken currently
+#from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas
 
 class Signals:
     def on_window1_destroy(self, widget):

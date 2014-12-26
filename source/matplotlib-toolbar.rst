@@ -28,8 +28,9 @@ Assuming that you worked through the first chapter, you should already be slight
     
     from matplotlib.figure import Figure
     from numpy import sin, cos, pi, linspace
-    from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
-    from matplotlib.backends.backend_gtk3 import NavigationToolbar2GTK3 as NavigationToolbar
+    #Possibly this rendering backend is broken currently
+    #from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas    from matplotlib.backends.backend_gtk3 import NavigationToolbar2GTK3 as NavigationToolbar
 
 The next lines of code create a *GtkWindow* and in addition to lines from the first chapter we will also define a title and a icon (from a file in the same directory) for our program window:
 
@@ -138,8 +139,9 @@ The last line of the code just show the window and start the main program loop. 
     
     from matplotlib.figure import Figure
     from numpy import sin, cos, pi, linspace
-    from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
-    from matplotlib.backends.backend_gtk3 import NavigationToolbar2GTK3 as NavigationToolbar
+    #Possibly this rendering backend is broken currently
+    #from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas    from matplotlib.backends.backend_gtk3 import NavigationToolbar2GTK3 as NavigationToolbar
     
     myfirstwindow = Gtk.Window()
     myfirstwindow.connect("delete-event", Gtk.main_quit)
@@ -271,8 +273,9 @@ The Python code from above only needs minor adjustments. The two containers (*Gt
 
     from matplotlib.figure import Figure
     from numpy import sin, cos, pi, linspace
-    from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
-    from matplotlib.backends.backend_gtk3 import NavigationToolbar2GTK3 as NavigationToolbar
+    #Possibly this rendering backend is broken currently
+    #from matplotlib.backends.backend_gtk3agg import FigureCanvasGTK3Agg as FigureCanvas
+    from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas    from matplotlib.backends.backend_gtk3 import NavigationToolbar2GTK3 as NavigationToolbar
 
     class Signals:
         def on_window1_destroy(self, widget):

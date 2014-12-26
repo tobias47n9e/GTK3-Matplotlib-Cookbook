@@ -23,6 +23,11 @@ This reposistory is monitored by Landscape (https://landscape.io/).
 [![Code Health](https://landscape.io/github/spiessbuerger/GTK3-Matplotlib-Cookbook/master/landscape.png)](https://landscape.io/github/spiessbuerger/GTK3-Matplotlib-Cookbook/master)
 
 ##News and Comments
+###2014-12-26
+I have been busy on some other projects lately. Revisiting this project, I had some trouble running my examples on Ubuntu 14.04 and the current master of Matplotlib (1.5.dev1). The problem seems to be in the *gtk3agg* backend. I get the following error: *NotImplementedError: Surface.create_for_data: Not Implemented yet.*. Not sure how many people have trouble with this, but it is mentioned in different places (e.g. http://matplotlib.1069221.n5.nabble.com/Matplotlib-py3-gtk3-td42953.html). Getting the plots to work again just requires you to switch rendering backends:
+
+    from matplotlib.backends.backend_gtk3cairo import FigureCanvasGTK3Cairo as FigureCanvas
+
 ###2014-07-26
 The fourth chapter about entering data is finished. I also decided to start code reviewing with Landscape. The score was 63 % on standard settings and 23 % on high (meaning very strict code reviewing). The low score is mostly caused by the *conf.py* file from Sphinx, my usage of "old classes" and Landscape complaining about the Gtk specific code. I will try to deal with the issues first, before uploading more chapters.
 
